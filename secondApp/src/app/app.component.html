@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Document</title>
+</head>
+<body ng-app="myApp">
+  <mat-toolbar color="primary">
+    
+    <div class="space">
+    <span><h3>Smart Cafeteria</h3></span>
+    </div>
+    </mat-toolbar>
+  <mat-tab-group>
+    <mat-tab label="Live Occupancy">
+  <div id="main">
+  <div id="div1">
+  <mat-card class = "tp-card">
+    <mat-card-header>
+      <div mat-card-avatar class = "tp-header-image"></div>
+      <mat-card-title>Current People Occupancy</mat-card-title>
+      <mat-card-subtitle class="tp-sub">100-150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{content1}}</mat-card-subtitle>
+      <mat-card-subtitle style="color: yellow;">{{str}}</mat-card-subtitle>
+     
+    </mat-card-header>
+  
+</mat-card>
+</div>
+<div id="div2">
+<mat-card class = "tp-card">
+  <mat-card-header>
+    <div mat-card-avatar class = "tp-header-image"></div>
+    <mat-card-title >Current People Occupancy</mat-card-title>
+    <mat-card-subtitle class="tp-sub">100-150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{content2}}</mat-card-subtitle>
+    <mat-card-subtitle style="color: yellow;">{{str}}</mat-card-subtitle>
+  
+  </mat-card-header>
+
+</mat-card>
+</div>
+<div id="div3" style="width: 50%;">
+  <mat-card class = "tp-card" style="width: 90%">
+    <mat-card-header>
+      <div mat-card-avatar class = "tp-header-image" ></div>
+      <mat-card-title>Occupancy trend graph</mat-card-title>
+     <mat-card-subtitle><app-chart></app-chart></mat-card-subtitle>
+      
+      
+    </mat-card-header>
+  
+  </mat-card>
+  </div>
+  <div id="div4" style="width: 50%;">
+    <mat-card class = "tp-card" style="width: 90%">
+      <mat-card-header>
+        <div mat-card-avatar class = "tp-header-image" ></div>
+        <mat-card-title>Occupancy trend graph</mat-card-title>
+       <mat-card-subtitle><app-chart2></app-chart2></mat-card-subtitle>
+    
+      </mat-card-header>
+  
+    </mat-card>
+    </div>
+</div>
+</mat-tab>
+<mat-tab label="Historical Occupancy">
+  <!-- <app-historical> </app-historical> -->
+  <div  id="div5" ng-controller="myCtrl">
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickeryear" 
+       placeholder="From Date">
+      <mat-datepicker-toggle  [for]="pickeryear">
+      </mat-datepicker-toggle>
+      <mat-datepicker #pickeryear startView="year"></mat-datepicker>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickeryear1" 
+       placeholder="To Date">
+      <mat-datepicker-toggle  [for]="pickeryear1">
+      </mat-datepicker-toggle>
+      <mat-datepicker #pickeryear1 startView="year"></mat-datepicker>
+    </mat-form-field>
+  
+    <button (click)="toggleDisplay()">Apply</button>
+  </div>
+  <div *ngIf="isDisplay">
+    <div id="div7">
+      <mat-card class = "tp-card">
+        <mat-card-header>
+          <div mat-card-avatar class = "tp-header-image"></div>
+          <mat-card-title>Current People Occupancy</mat-card-title>
+          <mat-card-subtitle class="tp-sub">100-150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30</mat-card-subtitle>
+          <mat-card-subtitle style="color: yellow;">Moderate</mat-card-subtitle>
+         
+        </mat-card-header>
+      
+      </mat-card>
+    </div>
+    <div id="div8">
+      <mat-card class = "tp-card">
+        <mat-card-header>
+          <div mat-card-avatar class = "tp-header-image"></div>
+          <mat-card-title >Current People Occupancy</mat-card-title>
+          <mat-card-subtitle class="tp-sub">100-150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30</mat-card-subtitle>
+          <mat-card-subtitle style="color: yellow;">Moderate</mat-card-subtitle>
+         
+        </mat-card-header>
+      
+      </mat-card>
+
+    </div>
+
+
+    <div id="div9" style="width: 50%;">
+      <mat-card class = "tp-card" style="width: 90%">
+        <mat-card-header>
+          <div mat-card-avatar class = "tp-header-image" ></div>
+          <mat-card-title>Occupancy trend graph</mat-card-title>
+          <mat-card-subtitle><app-historical> </app-historical></mat-card-subtitle>
+        </mat-card-header>
+        </mat-card>
+    </div>
+    <div id="div10" style="width: 50%;">
+      <mat-card class = "tp-card" style="width: 90%">
+        <mat-card-header>
+          <div mat-card-avatar class = "tp-header-image" ></div>
+          <mat-card-title>Occupancy trend graph</mat-card-title>
+          <mat-card-subtitle><app-historical2> </app-historical2></mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+
+    
+
+  </div>
+</mat-tab>
+
+</mat-tab-group>
+</body>
+</html>
